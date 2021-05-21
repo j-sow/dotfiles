@@ -1,0 +1,82 @@
+{
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "args": ["--log-file=/tmp/ccls.log", "-v=1"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "client": {
+         "snippetSupport": true
+        },
+        "highlight": {
+          "lsRanges": true,
+        }
+      }
+    }
+  },
+  "coc.diagnostic.enableHiglightLineNumber": true,
+  "clangd.semanticHighlighting": true,
+  "prettier.eslintIntegration": true,
+  "diagnostic-languageserver.debug": true,
+  "diagnostic-languageserver.filetypes": {
+    "markdown": ["alex", "write-good"],
+    "cpp": []
+  },
+  "diagnostic-languageserver.linters": {
+    "alex": {
+      "command": "alex",
+      "debounce": 200,
+      "isStderr": true,
+      "args": ["--stdin"],
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "sourceName": "alex.js",
+      "formatLines": 1,
+      "formatPattern": [
+        "^\\s*(\\d+):(\\d+)-(\\d+):(\\d+)\\s{2}([a-z]+)\\s{2}(.*?)\\s{2,}([a-z-]+)\\s{2,}([a-z-]+)$",
+        {
+          "line": 1,
+          "column": 2,
+          "endLine": 3,
+          "endColumn": 4,
+          "security": 5,
+          "message": 6
+        }
+      ],
+      "securities": {
+        "warning": "warning",
+        "error": "error"
+      }
+    },
+    "cpplint": {
+      "command": "cpplint",
+      "args": ["%file"],
+      "debounce": 100,
+      "isStderr": true,
+      "isStdout": false,
+      "sourceName": "cpplint",
+      "offsetLine": 0,
+      "offsetColumn": 0,
+      "formatPattern": [
+        "^[^:]+:(\\d+):(\\d+)?\\s+([^:]+?)\\s\\[(\\d)\\]$",
+        {
+          "line": 1,
+          "column": 2,
+          "message": 3,
+          "security": 4
+        }
+      ],
+      "securities": {
+        "1": "info",
+        "2": "warning",
+        "3": "warning",
+        "4": "error",
+        "5": "error"
+      }
+    }
+  }
+}
