@@ -3,7 +3,7 @@
     "ccls": {
       "command": "ccls",
       "args": ["--log-file=/tmp/ccls.log", "-v=1"],
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "filetypes": ["c", "cc", "cpp", "c++"],
       "rootPatterns": [".ccls", "compile_commands.json"],
       "initializationOptions": {
         "cache": {
@@ -13,7 +13,7 @@
          "snippetSupport": true
         },
         "highlight": {
-          "lsRanges": true,
+          "lsRanges": true
         }
       }
     }
@@ -23,35 +23,10 @@
   "prettier.eslintIntegration": true,
   "diagnostic-languageserver.debug": true,
   "diagnostic-languageserver.filetypes": {
-    "markdown": ["alex", "write-good"],
+    "markdown": ["write-good"],
     "cpp": []
   },
   "diagnostic-languageserver.linters": {
-    "alex": {
-      "command": "alex",
-      "debounce": 200,
-      "isStderr": true,
-      "args": ["--stdin"],
-      "offsetLine": 0,
-      "offsetColumn": 0,
-      "sourceName": "alex.js",
-      "formatLines": 1,
-      "formatPattern": [
-        "^\\s*(\\d+):(\\d+)-(\\d+):(\\d+)\\s{2}([a-z]+)\\s{2}(.*?)\\s{2,}([a-z-]+)\\s{2,}([a-z-]+)$",
-        {
-          "line": 1,
-          "column": 2,
-          "endLine": 3,
-          "endColumn": 4,
-          "security": 5,
-          "message": 6
-        }
-      ],
-      "securities": {
-        "warning": "warning",
-        "error": "error"
-      }
-    },
     "cpplint": {
       "command": "cpplint",
       "args": ["%file"],
@@ -78,5 +53,9 @@
         "5": "error"
       }
     }
-  }
+  },
+  "suggest.enablePreview": true,
+  "diagnostic.messageTarget": "echo",
+  "signature.target": "echo",
+  "coc.preferences.hoverTarget": "float"
 }

@@ -68,10 +68,10 @@ zstyle ':completion:*' menu select
 setopt IGNORE_EOF
 
 # vi mode!
-#bindkey -v
+bindkey -v
 # Up/down history search
-#bindkey -M vicmd 'k' history-substring-search-up
-#bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # some language stuff
 export LC_ALL=en_US.UTF-8

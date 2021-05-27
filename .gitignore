@@ -1,0 +1,8 @@
+*
+!.config/alacritty/alacritty.yml
+!.config/nvim
+!.gitconfig
+!.gitignore
+!.gitignore_global
+!.tmux.conf
+!.zshrc

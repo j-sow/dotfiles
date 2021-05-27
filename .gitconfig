@@ -1,0 +1,7 @@
+[user]
+	email = jon@h3dgamma.com
+	name = Jon Sowers
+[color]
+	ui = auto
+[core]
+	excludesfile = /home/jon/.gitignore_global
