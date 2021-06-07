@@ -5,3 +5,12 @@
 	ui = auto
 [core]
 	excludesfile = /home/jon/.gitignore_global
+[alias]
+	st = status -s
+	cl = clone
+	co = checkout
+	br = branch
+	cp = cherry-pick
+	gr = grep -Ii
+	diff = diff --word-diff
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=relative
