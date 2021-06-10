@@ -44,7 +44,7 @@ Plug 'zivyangll/git-blame.vim'
 "Plug 'tpope/vim-vinegar'
 " Auto close parens
 Plug 'jiangmiao/auto-pairs'
-"Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Add comments using gcc and gc
 Plug 'tpope/vim-commentary'
 "Plug 'suy/vim-context-commentstring'
