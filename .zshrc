@@ -45,6 +45,7 @@ zplug 'zimfw/git', use:init.zsh, from:github
 zplug 'zsh-users/zsh-autosuggestions', use:zsh-autosuggestions.zsh, from:github
 zplug 'zdharma/fast-syntax-highlighting', from:github
 zplug 'zsh-users/zsh-history-substring-search', from:github
+zplug 'agkozak/zsh-z', from:github
 
 
 if ! zplug check --verbose; then
@@ -156,6 +157,7 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # Rust
 #source "$HOME/.cargo/env"
+export WINIT_X11_SCALE_FACTOR=1
 
 
 lsdir () {
@@ -183,3 +185,5 @@ fi
 preexec(){ [ $1 != $2 ] && print -r "> $2" }
 #PROMPT='%* '$PROMPT
 alias dotcfg='/usr/bin/git --git-dir=/home/jon/.dotfiles/ --work-tree=/home/jon'
+
+source /home/jon/.config/broot/launcher/bash/br

@@ -147,3 +147,5 @@ set_sys_date () {
 	ssh root@$1 "date --set=\"$(date -u)\""
 	ssh root@$1 "hwclock --systohc"
 }
+
+source /home/jon/.config/broot/launcher/bash/br
