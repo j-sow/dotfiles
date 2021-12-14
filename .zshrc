@@ -38,14 +38,15 @@ ZPLUG_HOME="$HOME/.config/zplug/"
 ZPLUG_REPOS="$ZPLUG_HOME/repos"
 source "$ZPLUG_HOME/init.zsh"
 
+zplug 'zimfw/environment', from:github
 zplug 'mafredri/zsh-async', from:github
 zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
-zplug 'zimfw/history', use:init.zsh, from:github
 zplug 'zimfw/git', use:init.zsh, from:github
 zplug 'zsh-users/zsh-autosuggestions', use:zsh-autosuggestions.zsh, from:github
-zplug 'zdharma/fast-syntax-highlighting', from:github
+zplug 'zdharma-continuum/fast-syntax-highlighting', from:github
 zplug 'zsh-users/zsh-history-substring-search', from:github
 zplug 'agkozak/zsh-z', from:github
+zplug 'zsh-users/zsh-completions', depth:1
 
 
 if ! zplug check --verbose; then
@@ -61,10 +62,10 @@ zplug load
 ### Settings ###
 
 # Enable autocomplete
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
-
+autoload -U bashcompinit
+bashcompinit
 # Disable the super annoying CTRL+D logout
 setopt IGNORE_EOF
 
@@ -146,7 +147,6 @@ fr () {
 
 # path
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$PATH:/Users/chris/.local/bin"
 
 ### Other tools ###
 export NNN_PLUG='o:fzopen'
@@ -178,12 +178,15 @@ git_branch () {
 #setopt PROMPT_SUBST
 #export PROMPT='%B%F{red}%* %F{green}%n %F{cyan}%m %F{blue}%~ %b%F{yellow}$(git_branch)%f'$'\n''\$ '
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux new-session && exit;
+#open blank terminal
+alias bt='ZSH_NO_TMUX=true setsid alacritty -e $SHELL'
+
+if [[ -z "$ZSH_NO_TMUX" ]] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux new-session;
 fi
 
 preexec(){ [ $1 != $2 ] && print -r "> $2" }
 #PROMPT='%* '$PROMPT
-alias dotcfg='/usr/bin/git --git-dir=/home/jon/.dotfiles/ --work-tree=/home/jon'
+alias dotcfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source /home/jon/.config/broot/launcher/bash/br

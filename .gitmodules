@@ -1,0 +1,6 @@
+[submodule "/home/jonathonsowers/.config/nvim"]
+	path = /home/jonathonsowers/.config/nvim
+	url = https://github.com/nvchad/nvchad
+[submodule "/home/jonathonsowers/.config/config.nvim"]
+	path = /home/jonathonsowers/.config/config.nvim
+	url = https://github.com/wsorrows/config.nvim
