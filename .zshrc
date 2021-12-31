@@ -5,35 +5,6 @@
 
 
 ### Plugins ###
-
-# # fzf
-# source "$HOME/.fzf.zsh"
-# # Super fast fzf search using fd!
-# export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude ".git" --type f'
-# export FZF_DEFAULT_OPTS="--ansi"
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# zsh-async (used by other plugins)
-#source "$HOME/.config/zsh/plugins/zsh-async/async.plugin.zsh"
-
-# pure shell
-#source "$HOME/.config/zsh/plugins/pure/pure.zsh"
-
-# history settings
-#source "$HOME/.config/zsh/plugins/zimfw/modules/history/init.zsh"
-
-# git aliases
-#source "$HOME/.config/zsh/plugins/zimfw/modules/git/init.zsh"
-
-# zsh autosuggestions
-#source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# syntax highlighting
-#source "$HOME/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-
-# history search via substring
-#source "$HOME/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh"
-
 ZPLUG_HOME="$HOME/.config/zplug/"
 ZPLUG_REPOS="$ZPLUG_HOME/repos"
 source "$ZPLUG_HOME/init.zsh"
@@ -92,34 +63,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-cd-nnn () {
-    # Block nesting of nnn in subshells
-    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-        echo "nnn is already running"
-        return
-    fi
-
-    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # To cd on quit only on ^G, remove the "export" as in:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    # NOTE: NNN_TMPFILE is fixed, should not be modified
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    nnn "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
-}
-
-alias n='cd-nnn -e'
 alias serve='budo'
 alias l='exa'
 alias ll='exa -l'
@@ -175,8 +118,6 @@ lsf () {
 git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
-#setopt PROMPT_SUBST
-#export PROMPT='%B%F{red}%* %F{green}%n %F{cyan}%m %F{blue}%~ %b%F{yellow}$(git_branch)%f'$'\n''\$ '
 
 #open blank terminal
 alias bt='ZSH_NO_TMUX=true setsid alacritty -e $SHELL'
@@ -186,7 +127,8 @@ if [[ -z "$ZSH_NO_TMUX" ]] && command -v tmux &> /dev/null && [ -n "$PS1" ] && [
 fi
 
 preexec(){ [ $1 != $2 ] && print -r "> $2" }
-#PROMPT='%* '$PROMPT
 alias dotcfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-source /home/jon/.config/broot/launcher/bash/br
+if [[ -f ~/.zshrc_extra]]; then
+  source ~/.zshrc_extra
+fi
