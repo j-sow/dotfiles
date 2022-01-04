@@ -129,6 +129,6 @@ fi
 preexec(){ [ $1 != $2 ] && print -r "> $2" }
 alias dotcfg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-if [[ -f ~/.zshrc_extra]]; then
+if [[ -f ~/.zshrc_extra ]]; then
   source ~/.zshrc_extra
 fi
