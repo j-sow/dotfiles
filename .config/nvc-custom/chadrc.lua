@@ -44,7 +44,20 @@ M.plugins = {
   options = {
     lspconfig = {
       setup_lspconf = "custom.configs.lsp_configs"
-    }
+    },
+    nvimtree = {
+       enable_git = 1,
+       -- packerCompile required after changing lazy_load
+       lazy_load = true,
+
+       ui = {
+          allow_resize = true,
+          side = "left",
+          width = "20%",
+          auto_resize = true,
+          hide_root_folder = false,
+       },
+    },
   },
   default_plugin_config_replace = {
     lspconfig = "custom.configs.lspconfig",
