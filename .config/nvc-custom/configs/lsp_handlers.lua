@@ -13,6 +13,10 @@
     signs = true,
     underline = true,
     update_in_insert = false,
+    float = {
+      scope = "line",
+      source = "if_many",
+    },
  }
 
  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

@@ -1,3 +1,5 @@
+require("custom.configs.lsp_handlers")
+
 local function on_attach(_, bufnr)
    local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -57,4 +59,3 @@ if #addlsp_confs ~= 0 then
    require(addlsp_confs).setup_lsp(on_attach, capabilities)
 end
 
-require("plugins.configs.others").lsp_handlers()
