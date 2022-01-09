@@ -63,6 +63,7 @@ M.plugins = {
     lspconfig = "custom.configs.lspconfig",
     nvim_tree = "custom.configs.nvimtree",
     gitsigns = "custom.configs.gitsigns",
+    lsp_handlers = "custom.configs.lsp_handlers"
   },
 }
 
