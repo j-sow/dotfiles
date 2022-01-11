@@ -11,6 +11,7 @@ local map = require("core.utils").map
  map("n", "<leader>q", ":bd<CR>", opt)
  map("n", "<leader>ft", ":Telescope treesitter<CR>")
  map("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>")
+ map("n", "<leader>gr", ":Telescope lsp_references<CR>")
 
 -- NOTE : opt is a variable  there (most likely a table if you want multiple options),
 -- you can remove it if you dont have any custom options

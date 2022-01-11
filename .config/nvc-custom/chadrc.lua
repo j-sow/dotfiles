@@ -20,10 +20,6 @@ M.ui = {
    theme = "chadracula",
 }
 
-M.plugins = {
-
-}
-
 M.mappings = {
   misc = {
     line_number_toggle = "<space>n"
