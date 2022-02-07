@@ -31,7 +31,7 @@ fi
 zplug load 
 
 ### Settings ###
-
+fpath=($fpath /usr/share/zsh/vendor-completions)
 # Enable autocomplete
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
