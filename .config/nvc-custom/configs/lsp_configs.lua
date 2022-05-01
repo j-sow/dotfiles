@@ -59,6 +59,24 @@ M.setup_lsp = function(attach, capabilities)
       debounce_text_changes = 150,
     }
   }
+
+  lspconfig.tsserver.setup {
+    cmd = {'typescript-language-server', '--stdio' },
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
+    },
+    root_dir = function(fname)
+      return util.root_pattern 'tsconfig.json'(fname)
+        or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
+    end,
+    on_attach = attach,
+    capabilities = capabilities,
+  }
 end
    
    -- typescript
