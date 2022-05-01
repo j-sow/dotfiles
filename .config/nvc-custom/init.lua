@@ -23,13 +23,20 @@ local map = require("core.utils").map
 local customPlugins = require("core.customPlugins")
 customPlugins.add(function(use)
    use {
-     "blackCauldron7/surround.nvim",
+     "ur4ltz/surround.nvim",
       config = function()
         require("surround").setup {mappings_style = "sandwich"}
       end
    }
    use {
      "lambdalisue/suda.vim"
+   }
+   use {
+      "jose-elias-alvarez/null-ls.nvim",
+      after = "nvim-lspconfig",
+      config = function()
+         require("custom.configs.null-ls").setup()
+      end
    }
 end)
 
